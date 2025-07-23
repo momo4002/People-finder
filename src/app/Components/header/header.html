@@ -1,0 +1,67 @@
+<div class="header">
+    <div class="title">
+        <h1>People Finder</h1>
+    </div>
+    <button (click)="filterWindowClick()">
+        <img src="assets/icons/filter.svg" alt="Filter Icon" width="24" height="24" />
+    </button>
+</div>
+
+<div class="unten">
+    <h2>
+        @if(!selectedGen()){
+        All People
+        }
+        @if(selectedGen() === 'male'){
+        All Males
+        }
+        @if(selectedGen() === 'female'){
+        All Females
+        }
+        @if(!(selectedNat().length === 0) && selectedNat().length < nationalities().length){ from
+            {{selectedNat().join(', ')}}
+        }
+    </h2>
+</div>
+
+@if(filterWindow){
+<div class="overlay" (click)="filterWindowClick()"></div>
+<div class="modal">
+    <div>
+        <h3>Gender:</h3>
+        <div>
+            @if(this.selectedGen()===' male'){ <button style="background-color: #007bff; color: white;"
+            (click)="addGen('male')">Male</button>
+            }
+            @else {
+            <button (click)="addGen('male')">Male</button>
+            }
+            @if(this.selectedGen()==='female'){
+            <button style="background-color: #007bff; color: white;" (click)="addGen('female')">Female</button>
+            }
+            @else {
+            <button (click)="addGen('female')">Female</button>
+            }
+</div>
+</div>
+<div>
+    <h3>Nationality:</h3>
+    <div>
+        <div>
+            @for (nation of nationalities(); track $index) {
+            @if(this.selectedNat().includes(nation)){
+            <button style="background-color: #007bff; color: white;" (click)="addNat(nation)">{{ nation }}</button>
+            }
+            @else{
+            <button (click)="addNat(nation)">{{ nation }}</button>
+            }
+            }
+        </div>
+    </div>
+</div>
+<div>
+    <button (click)="applyFilter()">Apply</button>
+    <button (click)="resetFilter()">Reset</button>
+</div>
+</div>
+}

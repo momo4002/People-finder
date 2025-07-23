@@ -1,0 +1,37 @@
+<div class="user-list">
+  @for (user of users(); track user.id.value) {
+  <button class="user-card" (click)="zeigeDetails(user)">
+    <img [src]="user.picture.thumbnail" style="border-radius: 8px;" />
+    <p>{{ user.name.first }} {{ user.name.last }}</p>
+  </button>
+  }
+</div>
+
+@if(isLoading()){
+<p>Lade mehr Nutzer...</p>
+}
+
+@if (selectedUser()) {
+<div class="overlay" (click)="schliesseDetails()"></div>
+<div class="modal">
+  <h3>{{ selectedUser().name.title }} {{ selectedUser().name.first }} {{ selectedUser().name.last }}</h3>
+  <img style="border-radius: 8px;" [src]="selectedUser().picture.large" />
+  <p>Email: {{ selectedUser().email }}</p>
+  <p>Location: {{ selectedUser().location.city }}, {{ selectedUser().location.country }}
+    @if(extendedDetails){
+    {{ selectedUser().location.street.name }}, {{ selectedUser().location.street.number }}
+  <p>Phone: {{ selectedUser().phone }}</p>
+  <p>Gender: {{ selectedUser().gender }}</p>
+  }</p>
+
+  <div style="display: flex; justify-content: space-between; gap: 5rem;">
+    <button (click)="schliesseDetails()">Close</button>
+    @if(!extendedDetails){
+    <button (click)="zeigeMehrDetails()">More Details</button>
+    }
+    @else {
+    <button (click)="zeigeWenigerDetails()">Less Details</button>
+    }
+  </div>
+</div>
+}

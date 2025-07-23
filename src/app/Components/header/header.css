@@ -1,0 +1,119 @@
+.header {
+  position: sticky;
+  top: 0;
+  background-color: rgb(222, 222, 222);
+  padding: 1rem;
+  z-index: 1000;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;          
+  height: 100px;
+  max-width: 1200px;
+  margin: 0 auto;       
+  box-sizing: border-box; 
+}
+
+
+.unten {
+  background-color: #1d1e33;
+  margin: 1rem auto;
+  border-radius: 6px;
+  padding-left: 10px;
+  color: aliceblue;
+
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.overlay {
+  position: fixed;
+  inset: 0; /* top:0; right:0; bottom:0; left:0 */
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+
+  display: flex;
+  align-items: center;     /* vertikal mittig */
+  justify-content: center; /* horizontal mittig */
+}
+
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background: #e6e6e6;
+  padding: 2rem;
+  border-radius: 12px;
+  max-width: 90%;
+  max-height: 80vh;
+  box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  overflow-y: auto;
+  z-index: 1001;
+}
+
+.modal > div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.modal h3 {
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.modal > div > div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+/* Buttons nur in Farbe und Größe anpassen, Default-Stil bleibt erhalten */
+.modal button {
+  background-color: #f6f6f6;
+  font-size: 1rem;
+  color: #000000; /* Blau als Akzentfarbe */
+  padding: 0.5rem 1rem; /* Etwas mehr Padding */
+  border-radius: 6px; /* Etwas runder */
+  /* Keine Hintergrund- oder Border-Override, damit Default bleibt */
+}
+
+/* Hover Farbe für Buttons im Modal */
+.modal button:hover {
+  color: #0056b3;
+  background-color: rgba(0, 123, 255, 0.1);
+}
+
+/* Apply & Reset Buttons rechtsbündig mit Abstand */
+.modal > div:last-child {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+/* Apply Button noch etwas stärker hervorgehoben (Farbe, Schriftgewicht) */
+.modal > div:last-child button:first-child {
+  font-weight: 600;
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.modal > div:last-child button:first-child:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
